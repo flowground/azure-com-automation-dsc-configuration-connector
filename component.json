@@ -1,0 +1,171 @@
+{
+    "title": "AutomationManagement",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/automation-dscConfiguration/2015-10-31/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "DscConfiguration_ListByAutomationAccount": {
+            "main": "./lib/actions/DscConfiguration_ListByAutomationAccount.js",
+            "title": "Retrieve a list of configurations.",
+            "description": "Retrieve a list of configurations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DscConfiguration_ListByAutomationAccount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DscConfiguration_Delete": {
+            "main": "./lib/actions/DscConfiguration_Delete.js",
+            "title": "Delete the dsc configuration identified by configuration name.",
+            "description": "Delete the dsc configuration identified by configuration name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DscConfiguration_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DscConfiguration_Get": {
+            "main": "./lib/actions/DscConfiguration_Get.js",
+            "title": "Retrieve the configuration identified by configuration name.",
+            "description": "Retrieve the configuration identified by configuration name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DscConfiguration_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DscConfiguration_Update": {
+            "main": "./lib/actions/DscConfiguration_Update.js",
+            "title": "Create the configuration identified by configuration name.",
+            "description": "Create the configuration identified by configuration name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain; charset=utf-8": "text/plain; charset=utf-8"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DscConfiguration_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DscConfiguration_CreateOrUpdate": {
+            "main": "./lib/actions/DscConfiguration_CreateOrUpdate.js",
+            "title": "Create the configuration identified by configuration name.",
+            "description": "Create the configuration identified by configuration name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain; charset=utf-8": "text/plain; charset=utf-8"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DscConfiguration_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DscConfiguration_GetContent": {
+            "main": "./lib/actions/DscConfiguration_GetContent.js",
+            "title": "Retrieve the configuration script identified by configuration name.",
+            "description": "Retrieve the configuration script identified by configuration name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DscConfiguration_GetContent.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
